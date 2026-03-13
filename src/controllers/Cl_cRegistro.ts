@@ -31,8 +31,8 @@ export default class Cl_cRegistro {
             this.mRegistro.totalPersonas(),
             this.mRegistro.totalMujeres,
             this.mRegistro.totalHombres,
-            this.mRegistro.edadMayor(),
-            this.mRegistro.sexoMayor(),
+            this.mRegistro.edadMayor,
+            this.mRegistro.sexoMayor,
           );
         }
       }

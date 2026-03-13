@@ -16,6 +16,12 @@ export default class Cl_mRegistro {
   get totalHombres(): number {
     return this.cntHombres;
   }
+  get edadMayor(): number {
+    return this.mayorEdad;
+  }
+  get sexoMayor(): string {
+    return this.sexoMayorEdad;
+  }
   procesarPersona(p: Cl_mPersona): void {
     if (p.sexo === "M") {
       this.cntMujeres ++;
@@ -27,12 +33,6 @@ export default class Cl_mRegistro {
       this.mayorEdad = p.edad;
       this.sexoMayorEdad = p.sexo;
     }
-  }
-  edadMayor(): number {
-    return this.mayorEdad;
-  }
-  sexoMayor(): string {
-    return this.sexoMayorEdad;
   }
   totalPersonas(): number {
     return (this.cntMujeres + this.cntHombres);

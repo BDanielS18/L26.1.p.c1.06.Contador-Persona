@@ -8,15 +8,17 @@
 </head>
 
 <body>
-  <script type="module">
-    import cRegistro from "./dist/controllers/Cl_cRegistro.js";
-    new cRegistro();
-  </script>
 
   <section id="body">
     <div class="container mt-5">
       <h2>Gestión de Registro</h2>
-      <div id="salida"></div>
+      <div class="mb-3">
+        <strong>Persona Ingresada:</strong><br>
+        Nombre: <span id="body_lblNombre"></span><br>
+        Sexo: <span id="body_lblSexo"></span><br>
+        Edad: <span id="body_lblEdad"></span><br>
+      </div>
+      <div id="salida" class="mb-3"></div>
       <button type="button" class="btn btn-primary" id="body_btNuevaPersona">
         Nueva persona
       </button>
@@ -50,6 +52,10 @@
       <button id="persona_btAceptar">Aceptar</button>
     </div>
   </section>
+  <script type="module">
+    import cRegistro from "./dist/controllers/Cl_cRegistro.js";
+    new cRegistro();
+  </script>
 
 </body>
 

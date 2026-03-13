@@ -34,8 +34,8 @@ export default class Cl_vRegistro {
     if (this.vista === null) return;
     this.vista.hidden = true;
   }
- mostrarTotales(totalPersonas: number, totalMujeres: number, totalHombres: number, edadMayor: number,
-  sexoMayor: string): void {
+  mostrarTotales(totalPersonas: number, totalMujeres: number, totalHombres: number, edadMayor: number,
+    sexoMayor: string): void {
     this.salida.innerHTML = `
       Total de personas: ${totalPersonas} <br>
       Mujeres: ${totalMujeres} <br>
