@@ -1,0 +1,113 @@
+{
+  "compilerOptions": {
+    /* Visit https://aka.ms/tsconfig to read more about this file */
+
+  /* proyects */
+    //"incremetal": true, 
+    //"composite": true,
+    //"tsBuildInfoFile": "./tsbuildinfo",
+    //"disableSourceOfProjectReferenceRedirect": true,
+    //"disableSolutionSearching": true,
+    //"disableReferencedProjectLoad": true,
+
+  /* Languaje and enviroment */
+    "target": "es2020",
+    //"libs": [],
+    //"jsx": "preserve",
+    //"libReplacement": true,
+    //"experimentalDecorators": true,
+    //"emitDecoratorMetadata": true,
+    //"jsxFactory": "",
+    //"jsxFragmentFactory": "",
+    //"jsxImportSource": "",
+    //"reactNamespace": "",
+    //"noLib": true,
+    //"useDefineForClassFields": true,
+    //"moduleDetection": "auto",
+
+    /* Modules */
+    "module": "es2020",
+    "rootDir": "./src",
+    //"moduleResolution": "node10",
+    //"baseUrl": "./",
+    //"paths": {},
+    //"rootDirs": [],
+    //"typeRoots": [],
+    //"types": [],
+    //"allowUmdGlobalAccess": true,
+    //"moduleSuffixes": [],
+    //"allowImportingTsExtensions": true,
+    //"rewriteRelativeImportExtensions": "true",
+    //"resolvePackageJsonExports": true,
+    //"resolvePackageJsonImports": true,
+    //customConditions: [],
+    //"noUnchexkSideEffectrImports": true,
+    //"resolveJsonModule": true,
+    //"allowArbitraryExtensions": true,
+    //"noResolve": true,
+
+  /* JavaScript Support */
+    //"allowJs": true,
+    //"checkJs": true,
+    //"maxNodeModuleJsDepth": 1,
+
+  /* Emit */
+    //"declaration": true,
+    //"declarationMap": true,
+    //"emitDeclarationOnly": true,
+    "sourceMap": true,
+    //"inlineSourceMap": true,
+    //"noEmit": true,
+    //"outFile": "./",
+    "outDir": "./dist",
+    //"removeComments": true,
+    //"importHelpers": true,
+    //"downlevelIteration": true,
+    //"sourceRoot": "",
+    //"mapRoot": "",
+    //"inlineSources": true,
+    //"emitBOM": true,
+    //"newLine": "crlf",
+    //"stripInternal": true,
+    //"noEmitHelpers": true,
+    "noEmitOnError": true,
+    //"preserveConstEnums": true,
+    //"declarationDir": "./",
+
+  /* Interop Constraints */
+    //"isolatedModules": true,
+    //"verbaimousModuleSyntax": true,
+    //"isolateDeclarations": true,
+    //"erasableSyntaxOnly": true,
+    //"allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    //"preserveSymlinks": true,
+    "forceConsistentCasingInFileNames": true,
+  
+  /* Type Checking */
+    "strict": true,
+    //"noImplicitAny": true,
+    //"strictNullChecks": true,
+    //"strictFunctionTypes": true,
+    //"strictBindCallApply": true,
+    //"strictPropertyInitialization": true,
+    //"strictBuiltinInteratorReturn": true,
+    //"noImplicitThis": true,
+    //"useUnknownInCatchVariables": true,
+    //"alwaysStrict": true,
+    //"noUnusedLocals": true,
+    //"noUnusedParameters": true,
+    //"exactOptionalPropertyTypes": true,
+    //"noImplicitReturns": true,
+    //"noFallthroughCasesInSwitch": true,
+    //"noUncheckedIndexedAccess": true,
+    //"noImplicitOverride": true,
+    //"noPropertyAccessFromIndexSignature": true,
+    //"allowUnusedLabels": false,
+    //"allowUnreachableCode": false,
+
+  /* Completeness */
+    //"skipDefaultLibCheck": true,
+    "skipLibCheck": true,
+  }
+}

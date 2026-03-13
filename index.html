@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="module">
+    import cRegistro from "./dist/controllers/Cl_cRegistro.js";
+    new cRegistro();
+  </script>
+
+  <section id="body">
+    <div class="container mt-5">
+      <h2>Gestión de Registro</h2>
+      <div id="salida"></div>
+      <button type="button" class="btn btn-primary" id="body_btNuevaPersona">
+        Nueva persona
+      </button>
+  </section>
+        <hr>
+
+  <section id="persona" hidden>
+    <div>
+      <h5 id="persona_lblPersona">Procesar Persona</h5>
+    </div>
+    <div>
+      <label>Nombre:
+        <input type="text" class="form-control" id="persona_inNombre" placeholder="Ej: Juan">
+      </label>
+    </div>
+    <div>
+      <label>Sexo:
+        <select class="form-control" id="persona_inSexo">
+          <option value="M">Femenino</option>
+          <option value="H">Masculino</option>
+        </select>
+      </label>
+    </div>
+    <div>
+      <label>Edad:
+        <input type="number" class="form-control" id="persona_inEdad" placeholder="Ej: 25">
+      </label>
+    </div>
+    <div>
+      <button id="persona_btCancelar">Cancelar</button>
+      <button id="persona_btAceptar">Aceptar</button>
+    </div>
+  </section>
+
+</body>
+
+</html>
