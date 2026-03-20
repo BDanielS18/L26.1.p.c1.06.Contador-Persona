@@ -1,140 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de Personas</title>
-  
-  <!-- Aquí cargamos "Bootstrap", que es como un traje elegante para nuestra página. 
-       Hace que los botones se vean bonitos sin que nosotros tengamos que dibujar cada detalle. -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-  <style>
-    /* 
-      Este es un pequeño truco visual. 
-      Más adelante, cuando le digamos al código "¡Muestra la ventana para agregar personas!", 
-      este bloque de instrucciones hará que el fondo se oscurezca un poco 
-      para que la ventanita resalte en el centro, como en las aplicaciones reales.
-    */
-    #persona:not([hidden]) {
-      display: block !important;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 </head>
+
 <body>
+  <script type="module">
+    import Cl_vRegistro from "./dist/views/Cl_vRegistro.js";
+    import Cl_vPersona from "./dist/views/Cl_vPersona.js";
+    import Cl_cPersona from "./dist/controllers/Cl_cPersona.js";
+    import Cl_cRegistro from "./dist/controllers/Cl_cRegistro.js";
 
-<!-- 
-  =========================================
-  1. PANTALLA PRINCIPAL
-  =========================================
-  Este es el bloque que siempre vemos al abrir la página.
-  Le pusimos de nombre (id) "body" para que el programa sepa dónde buscar la información principal.
--->
-<section id="body">
-  
-  <div class="container mt-5">
-    <h2>Registro de Personas</h2>
-    
-    <!-- 
-      Este es el botón mágico. Al darle clic, nuestro programa dice: 
-      "Ah, ¡quieren agregar a alguien nuevo!" y nos mostrará el formulario.
-    -->
-    <button type="button" class="btn btn-primary my-3" id="body_btNuevaPersona">
-      Nueva Persona
-    </button>
-    <hr>
-    
-    <!-- Aquí es donde la página nos avisa quién fue el último que registramos -->
-    <div class="mb-3">
-      <strong>Última Persona Ingresada:</strong><br>
-      
-      <!-- Estos espacios (span) funcionan como cajitas vacías preparadas.
-           El programa escribirá el Nombre, Sexo y Edad del último registrado justo aquí. -->
-      Nombre: <span id="body_lblNombre">Ninguno</span><br>
-      Sexo: <span id="body_lblSexo">Ninguno</span><br>
-      Edad: <span id="body_lblEdad">0</span><br>
-    </div>
+    const vRegistro = new Cl_vRegistro();
+    const vPersona = new Cl_vPersona();
+    const cPersona = new Cl_cPersona(vPersona);
+    const cRegistro = new Cl_cRegistro(vRegistro, cPersona);
+  </script>
 
-    <!-- 
-      Este es el cuadrito de color azul donde irán todos los resúmenes y cálculos finales 
-      (cuántos hombres hay, quién es el mayor, etc).
-    -->
-    <div class="alert alert-info" id="salida">
-      Aún no hay personas registradas.
-    </div>
-  </div>
-</section>
+  <section id="body">
+    <div>
+      <h2>Gestión de Registro</h2>
+      <div id="salida"></div>
 
-<!-- 
-  =========================================
-  2. LA VENT ANITA SECRETA (EL FORMULARIO)
-  =========================================
-  Nota que dice "hidden" (oculto). Esta parte de la página es invisible al inicio.
-  Solo aparece como una ventanita saltarina cuando pulsamos el botón de "Nueva Persona".
--->
-<section class="modal fade show" id="persona" tabindex="-1" hidden>
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- El título de nuestra ventanita -->
-      <div class="modal-header">
-        <h5 class="modal-title">Agregar Persona</h5>
+      <div>
+        <p><strong>Última persona:</strong></p>
+        <p>Nombre: <span id="body_lblNombre">---</span></p>
+        <p>Sexo: <span id="body_lblSexo">---</span></p>
+        <p>Edad: <span id="body_lblEdad">---</span></p>
       </div>
 
-      <!-- El espacio en el medio donde llenamos los datos -->
-      <div class="modal-body">
-        
-        <!-- Aquí escribimos el nombre -->
-        <label class="form-label" for="persona_inNombre">Nombre</label>
-        <input type="text" class="form-control" id="persona_inNombre" placeholder="Ej: Juan">
-
-        <!-- Aquí elegimos si es hombre o mujer con una lista desplegable -->
-        <label class="form-label mt-3" for="persona_inSexo">Sexo (M/H)</label>
-        <select class="form-control" id="persona_inSexo">
-          <option value="M">Femenino</option>
-          <option value="H">Masculino</option>
-        </select>
-
-        <!-- Aquí ponemos cuántos años tiene -->
-        <label class="form-label mt-3" for="persona_inEdad">Edad</label>
-        <input type="number" class="form-control" id="persona_inEdad" placeholder="Ej: 25">
-      </div>
-
-      <!-- La parte de abajo donde están los botones para guardar o arrepentirnos -->
-      <div class="modal-footer">
-        
-        <!-- Botón gris para decir "No, mejor no guardo nada y cierro la ventana" -->
-        <button type="button" class="btn btn-secondary" id="persona_btCancelar">
-          Cancelar
-        </button>
-        
-        <!-- Botón verde para decir "¡Listo! Guarda esta persona" -->
-        <button type="button" class="btn btn-success" id="persona_btAceptar">
-          Aceptar
-        </button>
-      </div>
-
+      <button type="button" id="body_btNuevaPersona">
+        Nueva persona
+      </button>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Esto es necesario para que el "traje elegante" que le pusimos a la página tenga vida y animaciones -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <hr>
 
-<!-- 
-  =========================================
-  3. EL CEREBRO DE LA OPERACIÓN
-  =========================================
-  Acá le decimos a la página: "Despierta a todos los jefes que manejan los botones para que empiecen a trabajar".
--->
-<script type="module">
-  // Llamamos al archivo principal de tu código para que ponga a andar el programa
-  import Cl_cRegistro from "./dist/controllers/Cl_cRegistro.js";
-  
-  // ¡Encendemos el motor!
-  new Cl_cRegistro();
-</script>
+  <section id="persona" hidden>
+    <div>
+      <h5>Procesar Persona</h5>
+
+      <div>
+        <label>Nombre:
+          <input type="text" id="persona_inNombre" placeholder="Ej: Juan">
+        </label>
+      </div>
+      <div>
+        <label>Sexo:
+          <select id="persona_inSexo">
+            <option value="f">Femenino</option>
+            <option value="m">Masculino</option>
+          </select>
+        </label>
+      </div>
+
+      <div>
+        <label>Edad:
+          <input type="number" id="persona_inEdad" placeholder="Ej: 25">
+        </label>
+      </div>
+
+      <div>
+        <button id="persona_btCancelar">Cancelar</button>
+        <button id="persona_btAceptar">Aceptar</button>
+      </div>
+    </div>
+  </section>
 
 </body>
+
 </html>

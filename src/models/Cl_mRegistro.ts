@@ -49,12 +49,12 @@ export default class Cl_mRegistro {
   // Esta es la función principal. Le pasamos una "tarjeta" de persona (p)
   // y el Contador hace sus matemáticas.
   procesarPersona(p: Cl_mPersona): void {
-    // Si en la tarjeta dice que el sexo es "M" (Mujer), le suma 1 a su libreta de mujeres.
-    if (p.sexo === "M") {
+    // Si en la tarjeta dice que el sexo es "F" (Mujer), le suma 1 a su libreta de mujeres.
+    if (p.sexo === "f") {
       this.cntMujeres ++;
     }
-    // Si el sexo es "H" (Hombre), le suma 1 a la libreta de hombres.
-    if (p.sexo === "H") {
+      // Si el sexo es "M" (Hombre), le suma 1 a la libreta de hombres.
+    if (p.sexo === "m") {
       this.cntHombres ++;
     }
     

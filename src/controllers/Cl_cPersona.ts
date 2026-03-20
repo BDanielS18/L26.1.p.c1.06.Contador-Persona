@@ -6,52 +6,37 @@
 // Conecta a "La Vista" (la pantalla) con "El Modelo" (la tarjeta de datos).
 
 import Cl_mPersona from "../models/Cl_mPersona.js";
-import vista from "../views/Cl_vPersona.js";
+import { I_vPersona } from "../interfaces/I_vPersona.js";
 
 export default class Cl_cPersona {
-  // El jefe tiene a su cargo a la Vista de Persona (para leer lo que dice la pantalla)
-  private vista = new vista();
-  
-  // "callback" es solo una palabra elegante para decir: 
-  // "Un favor que haré cuando termine de trabajar para avisarle al Jefe Mayor (El Controlador Principal)".
-  callback: (persona: Cl_mPersona | null) => void;
+  private vista: I_vPersona;
+  private callback!: (persona: Cl_mPersona | null) => void;
 
-  // Cuando se crea este Controlador, recibe las instrucciones (el favor/callback)
-  constructor({
-    callback,
-  }: {
-    callback: (persona: Cl_mPersona | null) => void;
-  }) {
-    this.callback = callback;
-    
-    // El jefe le dice a los botones de la pantalla:
-    // "Oye Botón Cancelar, cuando te hagan click, avísame ejecutando mi función btCancelarOnClick"
-    this.vista.btCancelar.onclick = () => this.btCancelarOnClick();
-    
-    // "Oye Botón Aceptar, cuando te hagan click, avísame ejecutando mi función btAceptarOnClick"
-    this.vista.btAceptar.onclick = () => this.btAceptarOnClick();
+  constructor(vista: I_vPersona) {
+    this.vista = vista;
+    // El controlador se suscribe a los eventos de la interfaz
+    this.vista.onCancelar(() => this.btCancelarOnClick());
+    this.vista.onAceptar(() => this.btAceptarOnClick());
   }
 
-  // =========================================
-  // ¿QUÉ PASA AL HACER CLICK EN LOS BOTONES?
-  // =========================================
-  
-  // Si hicieron click en Cancelar...
-  btCancelarOnClick() {
-    // Le avisa al Jefe Mayor que no se creó ninguna persona (le envía un mensaje "nulo" o vacío)
+  // Método para que el Registro principal llame a este controlador
+  solicitarPersona(callback: (persona: Cl_mPersona | null) => void) {
+    this.callback = callback;
+    this.vista.mostrar();
+  }
+
+  private btCancelarOnClick() {
     this.callback(null);
     // Y le dice a la vista que esconda la ventanita
     this.vista.ocultar();
   }
 
-  // Si hicieron click en Aceptar...
-  btAceptarOnClick() {
-    // 1. Lee lo que el usuario escribió en la pantalla (this.vista.nombre, sexo, edad).
-    // 2. Con esos datos, fabrica una "tarjeta" nueva (new Cl_mPersona).
-    // 3. Le envía esa tarjeta lista al Jefe Mayor.
-    this.callback(new Cl_mPersona({ nombre: this.vista.nombre, sexo: this.vista.sexo, edad: this.vista.edad }));
-    
-    // Y finalmente, le dice a la vista que esconda la ventanita
+  private btAceptarOnClick() {
+    this.callback(new Cl_mPersona({ 
+        nombre: this.vista.nombre, 
+        sexo: this.vista.sexo, 
+        edad: this.vista.edad 
+    }));
     this.vista.ocultar();
   }
 }

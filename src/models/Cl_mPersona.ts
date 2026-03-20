@@ -34,7 +34,7 @@ export default class Cl_mPersona {
     return this._nombre;
   }
 
-  // Para guardar el sexo (M o H)...
+  // Para guardar el sexo (f o m)...
   set sexo(sexo: string) {
     this._sexo = sexo;
   }

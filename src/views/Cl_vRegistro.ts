@@ -1,23 +1,24 @@
+import { I_vRegistro } from "../interfaces/I_vRegistro.js";
 // =========================================
 // LA VISTA PRINCIPAL (REGISTRO): "LA PANTALLA PRINCIPAL"
 // =========================================
 // Este archivo es el encargado de la pantalla principal que vemos al apenas abrir la página.
 // Su único trabajo es saber dónde están los textos en la pantalla para poder cambiarlos luego.
 
-export default class Cl_vRegistro {
+export default class Cl_vRegistro implements I_vRegistro {
   // Estas son las "etiquetas" o espacios en blanco de la pantalla donde escribiremos los resultados
-  lblNombre: HTMLInputElement;
-  lblSexo: HTMLInputElement;
-  lblEdad: HTMLInputElement;
+  private lblNombre: HTMLInputElement;
+  private lblSexo: HTMLInputElement;
+  private lblEdad: HTMLInputElement;
   
-  // Este es el botón azul que dice "Nueva Persona"
-  btNuevaPersona: HTMLButtonElement;
+  // Este es el botón que dice "Nueva Persona"
+  private btNuevaPersona: HTMLButtonElement;
   
   // "vista" es la sección completa de la pantalla principal
-  vista: HTMLElement | null;
+  private vista: HTMLElement | null;
   
   // "salida" es el cuadro azul grandote donde ponemos los totales finales
-  salida: HTMLElement;
+  private salida: HTMLElement;
 
   // El "Constructor" arranca cuando abrimos la página. Busca en el HTML cada cosa por su nombre (ID).
   constructor() {
@@ -72,5 +73,9 @@ export default class Cl_vRegistro {
       Persona con Mayor Edad: ${edadMayor} <br>
       Sexo de Persona con Mayor Edad: ${sexoMayor}
     `;
+  }
+
+  onNuevaPersona(callback: () => void): void {
+      this.btNuevaPersona.onclick = callback;
   }
 }
